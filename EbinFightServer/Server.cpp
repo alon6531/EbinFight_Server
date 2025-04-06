@@ -76,8 +76,10 @@ void Server::UserDisconnected(std::vector<User*>::iterator& it, sf::TcpSocket* c
     this->PrintConnectedUsers();
 }
 
-void Server::SendMessageToClient(sf::TcpSocket& client, const std::string& message)
+void Server::SendMessageToClient(sf::TcpSocket& client, std::string message)
 {
+    if (message == "")
+        message = "empty";
     sf::Socket::Status status = client.send(message.c_str(), message.size());
     if (status == sf::Socket::Status::Done)
     {
@@ -132,8 +134,10 @@ void Server::Handle()
                 //std::cout << "Received: " << message << "\n";
                 auto parts = Package::Unpack(message);
                 std::cout << "Received: " << parts["action"] << "\n";
-                if (parts["action"] == "name")
+                if (parts["action"] == "InitUser")
                     this->InitUser(**it, parts["data"]);
+                if (parts["action"] == "SendAllObjects")
+                    this->SendAllObjects(**it);
             }
             else if (status == sf::Socket::Status::Disconnected)
             {
@@ -150,5 +154,19 @@ void Server::InitUser(User& user, const std::string& message)
 {
     user.SetName(message);
     PrintConnectedUsers();
+}
+
+void Server::SendAllObjects(User& user)
+{
+    std::vector<std::string> lines;
+    std::string objectStr = "";
+    if (OpenFile(lines, "..\\Configs\\Objects.txt"))
+    {
+        for(auto line : lines)
+            objectStr += line + "|";
+    }
+
+    SendMessageToClient(*user.m_client, objectStr);
+    
 }
 

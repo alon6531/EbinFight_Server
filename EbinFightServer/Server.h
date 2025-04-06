@@ -16,12 +16,13 @@ public:
 private:
     void UserConnected(sf::TcpSocket& client);
     void UserDisconnected(std::vector<User*>::iterator& it, sf::TcpSocket* client = NULL);
-    void SendMessageToClient(sf::TcpSocket& client, const std::string& message);
+    void SendMessageToClient(sf::TcpSocket& client, std::string message);
     void PrintConnectedUsers() const;
 
     void Handle();
 
     void InitUser(User& user, const std::string& message);
+    void SendAllObjects(User& user);
    
 
 private:

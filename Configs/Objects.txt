@@ -1,0 +1,23 @@
+name=player
+texture=a.png
+pos x=500
+pos y=50
+scale x=50
+scale y=50
+add hitBox component=true,5,0,0,0
+
+name=alon
+texture=a.png
+pos x=1000
+pos y=50
+scale x=50
+scale y=50
+add hitBox component=true,0,0,0,0
+
+name=daddy
+texture=a.png
+pos x=1200
+pos y=50
+scale x=50
+scale y=50
+add hitBox component=false

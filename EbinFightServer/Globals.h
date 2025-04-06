@@ -4,9 +4,10 @@
 #include <SFML/Network.hpp>
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <fstream>
 #include <map>
 
-
+bool OpenFile(std::vector<std::string>& lines, const std::string& file_name);
 
 struct Package {
 
