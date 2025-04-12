@@ -1,17 +1,13 @@
 #include "Server.h"
 
 
-int main()
-{
-    try {
-        // Create the server and start listening on port 53000
-        Server server(53000);
-        server.Listener();
+// נניח שיש לך את ההגדרות של Server ו-Engine מראש
 
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception in server: " << e.what() << std::endl;
-    }
+int main() {
+ 
+    Server server(53000);
+    server.Start();
+       
 
     return 0;
 }

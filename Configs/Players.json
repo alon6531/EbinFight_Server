@@ -1,0 +1,245 @@
+{
+    "a": {
+        "HitBoxComponent": [
+            true,
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0,
+                0
+            ]
+        ],
+        "MovementComponent": [
+            true,
+            20
+        ],
+        "origin": "center",
+        "pos": [
+            1036.82373046875,
+            1489.220703125
+        ],
+        "scale": [
+            0.30000001192092896,
+            0.30000001192092896
+        ],
+        "texture": "a.png"
+    },
+    "adasd": {
+        "HitBoxComponent": [
+            true,
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0,
+                0
+            ]
+        ],
+        "MovementComponent": [
+            true,
+            20
+        ],
+        "origin": "center",
+        "pos": [
+            600.0,
+            400.0
+        ],
+        "scale": [
+            0.30000001192092896,
+            0.30000001192092896
+        ],
+        "texture": "a.png"
+    },
+    "alon": {
+        "HitBoxComponent": [
+            true,
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0,
+                0
+            ]
+        ],
+        "MovementComponent": [
+            true,
+            20
+        ],
+        "origin": "center",
+        "pos": [
+            1309.9639892578125,
+            371.9921569824219
+        ],
+        "scale": [
+            0.30000001192092896,
+            0.30000001192092896
+        ],
+        "texture": "a.png"
+    },
+    "c": {
+        "HitBoxComponent": [
+            true,
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0,
+                0
+            ]
+        ],
+        "MovementComponent": [
+            true,
+            20
+        ],
+        "origin": "center",
+        "pos": [
+            747.0004272460938,
+            593.1990356445313
+        ],
+        "scale": [
+            0.30000001192092896,
+            0.30000001192092896
+        ],
+        "texture": "a.png"
+    },
+    "d": {
+        "HitBoxComponent": [
+            true,
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0,
+                0
+            ]
+        ],
+        "MovementComponent": [
+            true,
+            20
+        ],
+        "origin": "center",
+        "pos": [
+            961.999267578125,
+            401.8080139160156
+        ],
+        "scale": [
+            0.30000001192092896,
+            0.30000001192092896
+        ],
+        "texture": "a.png"
+    },
+    "f": {
+        "HitBoxComponent": [
+            true,
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0,
+                0
+            ]
+        ],
+        "MovementComponent": [
+            true,
+            20
+        ],
+        "origin": "center",
+        "pos": [
+            556.3958129882813,
+            479.80322265625
+        ],
+        "scale": [
+            0.30000001192092896,
+            0.30000001192092896
+        ],
+        "texture": "a.png"
+    },
+    "g": {
+        "HitBoxComponent": [
+            true,
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0,
+                0
+            ]
+        ],
+        "MovementComponent": [
+            true,
+            20
+        ],
+        "origin": "center",
+        "pos": [
+            752.4019775390625,
+            374.2025451660156
+        ],
+        "scale": [
+            0.30000001192092896,
+            0.30000001192092896
+        ],
+        "texture": "a.png"
+    },
+    "s": {
+        "HitBoxComponent": [
+            true,
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0,
+                0
+            ]
+        ],
+        "MovementComponent": [
+            true,
+            20
+        ],
+        "origin": "center",
+        "pos": [
+            600.0,
+            400.0
+        ],
+        "scale": [
+            0.30000001192092896,
+            0.30000001192092896
+        ],
+        "texture": "a.png"
+    },
+    "v": {
+        "HitBoxComponent": [
+            true,
+            [
+                0.0,
+                0.0
+            ],
+            [
+                0,
+                0
+            ]
+        ],
+        "MovementComponent": [
+            true,
+            20
+        ],
+        "origin": "center",
+        "pos": [
+            600.0,
+            400.0
+        ],
+        "scale": [
+            0.30000001192092896,
+            0.30000001192092896
+        ],
+        "texture": "a.png"
+    }
+}

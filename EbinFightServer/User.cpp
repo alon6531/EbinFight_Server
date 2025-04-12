@@ -2,13 +2,18 @@
 
 User::User(sf::TcpSocket& client) : m_client(&client)
 {
-    m_name = "alon";
+    m_name = "";
 }
 
-void User::SetName(const std::string& name)
+User::~User()
+{
+}
+
+void User::InitUser(const std::string& name)
 {
     m_name = name;
 }
+
 
 const std::string& User::GetName() const
 {
@@ -22,3 +27,4 @@ void User::PrintUser() const
         << m_client->getRemoteAddress().value().toString() << ":"
         << m_client->getRemotePort() << "\n }" << "\n\n";
 }
+
