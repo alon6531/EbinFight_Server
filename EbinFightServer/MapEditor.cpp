@@ -308,8 +308,9 @@ void MapEditor::SaveData()
 			{"texture" , "Map\\objects.png"},
 			{"AnimationComponent",
 			{
-			true, 0, {
+			true, 0,"idle", {
 					{
+						
 						{object.GetSprite()->getTextureRect().position.x, object.GetSprite()->getTextureRect().position.y},
 						{object.GetSprite()->getTextureRect().size.x, object.GetSprite()->getTextureRect().size.y}
 					},

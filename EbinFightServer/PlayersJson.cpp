@@ -45,6 +45,7 @@ bool PlayersJson::LoadData()
 
 bool PlayersJson::SaveData()
 {
+
     std::ofstream file(m_filePath);
     if (file.is_open()) {
         file << m_playerData.dump(4);
@@ -55,6 +56,17 @@ bool PlayersJson::SaveData()
     else {
         std::cerr << "PlayersJson:Failed to open file for writing: " << m_filePath << "\n";
         return false;
+    }
+}
+
+void PlayersJson::AutoSaveLoop()
+{
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+        if (m_dirty) {
+            SaveData();
+            m_dirty = false;
+        }
     }
 }
 
@@ -69,7 +81,7 @@ void PlayersJson::AddPlayer(const std::string& m_player_name, json player_data)
     
     m_playerData[m_player_name] = player_data;
 
-    this->SaveData();
+    m_dirty = true; // פלג שמתעדכן
     std::cout << "PlayersJson:New player added: " << m_player_name << "\n";
 	
 }
@@ -78,7 +90,7 @@ void PlayersJson::RemovePlayer(const std::string& m_player_name)
 {
     if (CheckIfPlayerExists(m_player_name)) {
         m_playerData.erase(m_player_name);
-        this->SaveData();
+        m_dirty = true; // פלג שמתעדכן
         std::cout << "PlayersJson:Player removed: " << m_player_name << "\n";
     }
     else {
@@ -100,7 +112,7 @@ void PlayersJson::UpdatePlayer(const std::string& m_player_name, const json& new
         }
 
         if (updated) {
-            SaveData();
+            m_dirty = true; // פלג שמתעדכן
             std::cout << "PlayersJson:Player updated: " << m_player_name << "\n";
         }
     }

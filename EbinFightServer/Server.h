@@ -15,6 +15,8 @@ public:
    
     MapJson& GetMapJson();
 
+   
+
 
 private:
     void UserConnected(sf::TcpSocket& client);
@@ -22,6 +24,8 @@ private:
     void SendMessageToClientTCP(User& user, const std::string& message);
     void SendMessageToClientUDP(const sf::IpAddress& ip, unsigned short port, const std::string& message);
     void PrintConnectedUsers() const;
+    void AutoSaveLoop();
+
 
     void Handle();
 	void HandleUDP();
@@ -30,7 +34,7 @@ private:
 
 	void InitPlayer(User& user, const json& player_data);
     void SendPlayer(User& user);
-	void UpdatePlayer(User& user, const json& player_data);
+	void UpdatePlayer(User& user, const json& player_data, unsigned short udp_port);
 
     void SendAllPlayers(User& user, unsigned short udp_port);
 

@@ -11,6 +11,9 @@ void Server::Start()
     m_mapJson = MapJson();
 	m_playersJson = PlayersJson();
 
+    std::thread autoSaveThread(&Server::AutoSaveLoop, this);
+    
+
 	//Listener();
     std::thread listenerThread(&Server::Listener, this);
 
@@ -18,6 +21,8 @@ void Server::Start()
 	app.Run();
    
     listenerThread.join();
+
+    autoSaveThread.join();
 }
 
 void Server::Listener()
@@ -82,6 +87,18 @@ MapJson& Server::GetMapJson()
     return m_mapJson;
 }
 
+void Server::AutoSaveLoop()
+{
+    while (true) {
+        // Sleep for 5 seconds before performing the save
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+
+        // Perform the saving operation (for players, map, etc.)
+        m_playersJson.SaveData();  // Adjust as needed for other data
+        std::cout << "Auto-saving player data...\n";
+    }
+}
+
 void Server::UserConnected(sf::TcpSocket& client)
 {
     m_users.push_back(User(client));
@@ -124,7 +141,7 @@ void Server::SendMessageToClientUDP(const sf::IpAddress& ip, unsigned short port
 
     if (status != sf::Socket::Status::Done)
     {
-        std::cerr << "[UDP] Failed to send message to " << ip.toString() << ":" << port << "\n";
+       std::cerr << "[UDP] Failed to send message to " << ip.toString() << ":" << port << "\n";
     }
 
 }
@@ -226,12 +243,12 @@ void Server::HandleUDP()
                     {
 
 
-                        std::cout << "[UDP] Received: " << j["action"]<< "from: " << it->GetName() << "\n";
+                       // std::cout << "[UDP] Received: " << j["action"]<< "from: " << it->GetName() << "\n";
                         if (j["action"] == "Ping") {
                             std::cout << "[UDP] Ping received from " << sender->toString() << '\n';
                         }
                         if (j["action"] == "UpdatePlayer") {
-                            this->UpdatePlayer(*it, j["data"]);
+                            this->UpdatePlayer(*it, j["data"], senderPort);
                             break;
                         }
 						if (j["action"] == "SendAllPlayers") {
@@ -300,9 +317,11 @@ void Server::SendPlayer(User& user)
     //std::cout << "Server:Player sent: " << player["name"] << "\n";
 }
 
-void Server::UpdatePlayer(User& user, const json& player_data)
+void Server::UpdatePlayer(User& user, const json& player_data, unsigned short udp_port)
 {
     m_playersJson.UpdatePlayer(user.GetName(), player_data);
+    //json j{ "hello" };
+    //SendMessageToClientUDP(user.m_client->getRemoteAddress().value(), udp_port, j);
 
 }
 
